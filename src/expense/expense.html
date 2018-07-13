@@ -1,0 +1,126 @@
+<div class='exp-content-container'>
+    <div>
+        <h1 class="page-title"> All Transactions </h1>
+    </div>
+    <div>
+        <div class="col-md-12 margin-top col-lg-12">
+            <div class="expense-grid-container">
+                <div class="expense-head-padding">
+                    <div class="search-wrapper search-section">
+                        <div id="search">
+                            <input id="txt" type="search" placeholder="Search" class="search e-input">
+                            <span id="searchbtn" class="e-search-icon expense-search-icon e-icons"></span>
+                        </div>
+                        <div class="button-section search-section">
+                            <button id="addexpense" class="e-btn small e-info">Add Transaction</button>
+                            <button id="filterExpense" class="e-btn small e-info">Filter</button>
+                            <div id="add-btn" class='e-btn'>
+                                <span class='e-icons add-icon add-head-item'></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id='grid' class="margin-top-10 expense-grid-margin pane" style="height:100%;width:100%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class='filter-container'>
+        <aside id="sidebar-indexexpense">
+            <div class="filter pane sidebar-wrapper-filter">
+                <div class="filter-head">
+                    <span class="e-icon filter-icon filter-head-item"></span>
+                    <span class="filter-txt filter-head-item">Filters</span>
+                </div>
+                <div class="expense-filter-container">
+                    <label class="label-font">Select a range</label>
+                    <div class='filter-item'>
+                        <input type="text" id="daterange" class="DateTime" />
+                    </div>
+                    <label class="label-font">Category</label>
+                    <div class="treeview filter-item">
+                        <input type="text" id="expense-category">
+                    </div>
+                    <label class="label-font bottom-align">Cashflow</label>
+                    <div class="cashflow filter-item">
+                        <input id="income" class="cashflow-section" type="checkbox">
+                        <input id="expenses" class="cashflow-section" type="checkbox">
+                    </div>
+                    <label class="label-font bottom-align">Payment Mode</label>
+                    <div class="paymentModes filter-item">
+                        <input id="cash" class="cashflow-section" type="checkbox">
+                        <input id="debitcard" class="cashflow-section" type="checkbox">
+                        <br/>
+                        <br/>
+                        <input id="creditcard" class="cashflow-section" type="checkbox">
+                    </div>
+                    <div>
+                        <label class="label-font">Amount</label>
+                        <div class='amount-filter'>
+                            <div class='min-numeric amt-filter' style="width:100%">
+                                <label class="inlineAlign minLabel">Min</label>
+                                <label class="inlineAlign maxLabel" style="float:right;">Max</label>
+                                <div style="width:100%;height:50%;z-index:10000;">
+                                    <div id="range"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<script id="template" type="text/x-template">
+    <div class="normalRes">
+        <div class="category-icon ${Category}"></div>
+        <div class='category-text'>${Category}</div>
+    </div>
+    <div class="mediumRes">
+        <div>
+            <div class="category-icon ${Category}"></div>
+        </div>
+        <div>
+            <div> ${Category} </div>
+            <div class="description-section"> ${Description} </div>
+        </div>
+    </div>
+    <div class="smallRes">
+        <div class='sm-category sm-icon'>
+            <div class="category-icon ${Category}"></div>
+        </div>
+        <div class='sm-category category-content'>
+            <div> ${Category} </div>
+            <div class="description-section"> ${Description} </div>
+            <div> ${PaymentMode} </div>
+        </div>
+    </div>
+</script>
+
+<script id="amtTemplate" type="text/x-template">
+    <div class="normalRes">
+        <div class="lg-amount">
+            <div class='amt-payment ${TransactionType}'>
+                <span>$</span> <span>${Amount}</span>
+            </div>
+        </div>
+    </div>
+    <div class="mediumRes">
+        <div class="res-amount">
+            <div class='amt-payment ${TransactionType}'>
+                <span>$</span> <span>${Amount}</span>
+            </div>
+            <div>  ${getDate(data.DateTime)} </div>
+        </div>
+    </div>
+    <div class="smallRes">
+        <div class="res-amount">
+            <div class='amt-payment ${TransactionType}'>
+                <span>$</span> <span>${Amount}</span>
+            </div>
+            <div>  ${getDate(data.DateTime)} </div>
+        </div>
+    </div>
+ </script>

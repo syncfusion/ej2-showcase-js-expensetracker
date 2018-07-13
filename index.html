@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Essential JS 2 for JavaScript (ES5) - Expense Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Essential JS 2 for JavaScript" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="author" content="Syncfusion" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500,600" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="styles/styles.css" rel="stylesheet" />
+    <link href="styles/index.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reflect-metadata/0.1.10/Reflect.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zone.js/0.8.18/zone.min.js"></script>
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"><\/script>');
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-signals/1.0.0/js-signals.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossroads/0.12.0/crossroads.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hasher/1.2.0/hasher.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossroads/0.12.0/crossroads.js"></script>
+    <script src="dist/ej2.min.js"></script>
+</head>
+<div id="dialog" class="expense-dialog">
+</div>
+<div id="confirmDialog" style='min-width: 260px;'></div>
+
+<body>
+    <div id="addexpenseDialog" class="expense-dialog"></div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <span id="menu-toggle" href="#" class="navbar-toggle e-icon" style="float:left"></span>
+                <div class="navbar-brand samplenameheader"></div>
+                <span id="filter-toggle" href="#" class="navbar-toggle filter-toggle e-icon" style="float:right"></span>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <aside id="sidebar-indexdefault">
+            <div id="sidebar-wrapper" class="sidebar-toggle">
+                <div class='samplename-header'>
+                    <div class='samplename'></div>
+                </div>
+                <div class="info align-center">
+                    <div class="image"></div>
+                    <div class="content nameContent">
+                        <p class='name' id='user-name'>Nicholas Delacruz</p>
+                        <div class='wallet-container'>
+                            <span style='height: 27px;' class='balance-align'>
+                                <img src="./styles/images/cash-wallet.svg" />
+                            </span>
+                            <span id="current-balance" class='balance-align'>$ 0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-list align-center nav-list">
+                    <div class='nav-item'>
+                        <a class="overview ripple-element" id="nav-overview" href="#/dashboard">Dashboard</a>
+                    </div>
+                    <div class='nav-item'>
+                        <a class="expense ripple-element" id="nav-expense" href="#/expense">Transactions</a>
+                    </div>
+                    <div class='nav-item'>
+                        <a class="about ripple-element" id="nav-about" href="#/about">About</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <div id="sidebarRightpane">
+        <div class="content container-fluid rightpane">
+            <div class="content-wrapper">
+                <div id="content"></div>
+            </div>
+        </div>
+    </div>
+    <div id="overlay"></div>
+</body>
+<script src="./src/common/common.data.js "></script>
+<script src="./src/common/index.js "></script>
+<script src="./src/dashboard/dashboard.js "></script>
+<script src="./src/expense/expense.js "></script>
+<script src="./src/about/about.js "></script>
+<script>      
+    function retDate(DateTime) {
+        return window.getDate(DateTime)
+    }
+</script>
+
+</html>
