@@ -1,6 +1,5 @@
 var webpackGulp = require('webpack-stream');
 var webpack = require('webpack');
-var build = require("@syncfusion/ej2-build");
 
 /**
  * Bundle all module using webpack
