@@ -1,0 +1,160 @@
+<div class="control-section">
+    <div class="row" style="margin-bottom: 16px;">
+        <div class="page-title">
+            <div style="display: inline-block">Dashboard</div>
+        </div>
+        <div class="col-md-3 col-xs-12 col-xl-6 col-lg-3 daterange overview-range-picker">
+            <input id="daterange" />
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 card-container">
+                <div class="card e-card">
+                    <div class="e-card-content">
+                            <h3 class="card-value" id="tolincome">$0</h3>
+                            <span class="card-text">Income</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 card-container">
+                <div class="card e-card">
+                    <div class="e-card-content">
+                            <h3 class="card-value" id='tolexpense'>$0</h3>
+                            <span class="card-text">Expenses</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 card-container">
+                <div class="card e-card">
+                    <div class="e-card-content">
+                            <h3 class="card-value" id="tolbalance">$0</h3>
+                            <span class="card-text">Balance</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 card-container">
+                <div class="card e-card">
+                    <div class="e-card-content">
+                            <h3 class="card-value" id="toltransaction">0</h3>
+                            <span class="card-text">Transactions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='pie-chart-container'>
+        <div class="row pie-chart" id='totalExpense'>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="pane col-xs-12 col-sm-12 col-md-12 pie-container">
+                    <div class="pieChartHeader">
+                        <p class="chart-title">Total Expenses</p>
+                        <p id="rangeDate" class="chart-value"></p>
+                    </div>
+                    <div class="row">
+                        <div class="pieChart">
+                            <div id="total-expense"></div>
+                        </div>
+                        <div class="chartLegend" style="margin: 0 auto;">
+                            <div style="position: relative">
+                                <div class="legend-waitingpopup" id="grid-popup" style="display:none">
+                                    <span class="legend-image">
+                                        <svg class="e-spin-material" viewBox="0 0 30 30">
+                                            <path class="e-path-circle" stroke-width="3" d="M15,1.5A13.5,13.5 0 1 1 1.5,15" stroke-dasharray="63.61725123519331" stroke-dashoffset="190.0035236891107"
+                                                transform="rotate(-90 15 15)"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="pane legendGrid" style="box-shadow: none; min-width: 250px;" id="legend-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="line-chart-area">
+                <div class="col-xs-12 col-sm-6 col-md-6 chart-container">
+                    <div class="chart-padding">
+                        <div id="balance" class="line-chart" style="width:100%; max-width: 494px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="column-chart-area">
+                <div class="col-xs-12 col-sm-6 col-md-6 chart-container">
+                    <div class="chart-padding">
+                        <div class="column-chart" id="account-balance" style="width:100% "></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row recent-expense-grid">
+            <div class="col-xs-6 col-sm-6 col-md-12" style="width:100%">
+                <div id="recentexpense-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script id="rowtemplate" type="text/x-template">
+    <tr style="height: 30px;">
+        <td>
+            <div style="width: 16px; height: 16px; margin-left: 1px; border-radius: 16px; background:${color}"></div>
+        </td>
+        <td> ${text} </td>
+        <td> ${getCurrencyVal(data.y)} </td>
+        <td style="text-align:right;"> ${x} </td>
+    </tr>
+</script>
+
+    <script id="template" type="text/x-template">
+    <div class="normalRes">
+        <div class="category-icon ${Category}"></div>
+        <div class='category-text'>${Category}</div>
+    </div>
+    <div class="mediumRes">
+        <div>
+            <div class="category-icon ${Category}"></div>
+        </div>
+        <div>
+            <div> ${Category} </div>
+            <div class="description-section"> ${Description} </div>
+        </div>
+    </div>
+    <div class="smallRes">
+        <div class='sm-category sm-icon'>
+            <div class="category-icon ${Category}"></div>
+        </div>
+        <div class='sm-category category-content'>
+            <div> ${Category} </div>
+            <div class="description-section"> ${Description} </div>
+            <div> ${PaymentMode} </div>
+        </div>
+    </div>
+</script>
+
+    <script id="amtTemplate" type="text/x-template">
+   <div class="normalRes">
+        <div class='amt-payment ${TransactionType}'>
+            <span>$</span> <span>${Amount}</span>
+        </div>
+    </div>
+    <div class="mediumRes">
+        <div class='amt-payment ${TransactionType}'>
+            <span>$</span> <span>${Amount}</span>
+        </div>
+        <div>${getDate(data.DateTime)}</div>
+    </div>
+    <div class="smallRes">
+        <div class='amt-payment ${TransactionType}'>
+            <span>$</span> <span>${Amount}</span>
+        </div>
+        <div>${getDate(data.DateTime)}</div>
+    </div>
+</script>
+
+    <script id="dateTemplate" type="text/x-template">
+    ${getDate(data.DateTime)}
+</script>
+</div>
