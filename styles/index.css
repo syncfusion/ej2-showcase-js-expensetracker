@@ -518,7 +518,7 @@ input#txt {
 }
 
 .e-search-icon::before {
-  content: '\e922';
+  content: '\e993';
 }
 
 @media screen and (max-width: 590px) {
@@ -621,6 +621,10 @@ input#txt {
 #recentexpense-grid_toolbarItems {
   background: #fff;
   border: none;
+}
+
+#recentexpense-grid_toolbarItems.e-toolbar .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:first-child {
+  margin-left: 15px;
 }
 
 .e-grid .e-headercell {
