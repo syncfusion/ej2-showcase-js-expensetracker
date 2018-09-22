@@ -1,5 +1,7 @@
-var webpackGulp = require('webpack-stream');
+var fs = require('fs');
+var gulp = require('gulp');
 var webpack = require('webpack');
+var webpackGulp = require('webpack-stream');
 
 /**
  * Bundle all module using webpack
@@ -18,6 +20,7 @@ gulp.task('build', ['ship-deps'], function(done) {
     if (!fs.existsSync('./styles')) {
         fs.mkdirSync('./styles');
     }
+	var runSequence = require('run-sequence');
     runSequence('bundle', done);
 });
 
@@ -28,4 +31,18 @@ gulp.task('ship-deps', function(done) {
         .on('end', function() {
             done();
         });
+});
+/**
+ * Load the samples
+ */
+gulp.task('serve', ['build'], function (done) {
+    var browserSync = require('browser-sync');
+    var bs = browserSync.create('Essential JS 2');
+    var options = {
+        server: {
+            baseDir: './'
+        },
+        ui: false
+    };
+    bs.init(options, done);
 });
