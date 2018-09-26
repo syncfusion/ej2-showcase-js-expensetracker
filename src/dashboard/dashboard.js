@@ -286,27 +286,7 @@ function onDateRangeChange(args) {
     });
     gridObj.refresh();
     getTotalExpense();
-    pie.series = [{
-        dataSource: pieRenderingData,
-        xName: 'text',
-        yName: 'y',
-        radius: '83%',
-        startAngle: 0,
-        endAngle: 360,
-        innerRadius: '50%',
-        dataLabel: {
-            name: 'x',
-            visible: true,
-            position: 'Outside',
-            connectorStyle: { length: '10%' },
-            font: {
-                color: 'Black',
-                size: '14px'
-            }
-        },
-        palettes: ['#61EFCD', '#CDDE1F', '#FEC200', '#CA765A', '#2485FA', '#F57D7D', '#C152D2',
-            '#8854D9', '#3D4EB8', '#00BCD7']
-    }];
+    pie.series = getSeries();
     pie.dataBind();
     pie.refresh();
     createLegendData('pieUpdate');
@@ -315,13 +295,41 @@ function onDateRangeChange(args) {
     grid.refresh();
     formatRangeDate();
 }
+function getSeries() {
+    var series = [
+        {
+            dataSource: pieRenderingData,
+            xName: 'text',
+            yName: 'y',
+            radius: '83%',
+            startAngle: 0,
+            endAngle: 360,
+            innerRadius: '50%',
+            dataLabel: {
+                name: 'x',
+                visible: true,
+                position: 'Outside',
+                connectorStyle: { length: '10%' },
+                font: {
+                    color: 'Black',
+                    size: '14px',
+                    fontFamily: 'Roboto'
+                }
+            },
+            animation: { enable: false },
+            palettes: ['#61EFCD', '#CDDE1F', '#FEC200', '#CA765A', '#2485FA', '#F57D7D', '#C152D2',
+                '#8854D9', '#3D4EB8', '#00BCD7']
+        }
+    ];
+    return series;
+}
 function DateRange() {
     dateRangePickerObject = new ej.calendars.DateRangePicker({
         format: 'MM/dd/yyyy', change: onDateRangeChange,
         startDate: window.startDate,
         endDate: window.endDate,
         showClearButton: false,
-        readonly: false,
+        allowEdit: false,
         presets: [
             { label: 'Last Month', start: new Date('10/1/2017'), end: new Date('10/31/2017') },
             { label: 'Last 3 Months', start: new Date('9/1/2017'), end: new Date('11/30/2017') },
@@ -519,31 +527,7 @@ function InitializeComponet() {
         enableSmartLabels: true,
         width: '100%',
         height: '350px',
-        series: [
-            {
-                dataSource: pieRenderingData,
-                xName: 'text',
-                yName: 'y',
-                radius: '83%',
-                startAngle: 0,
-                endAngle: 360,
-                innerRadius: '50%',
-                dataLabel: {
-                    name: 'x',
-                    visible: true,
-                    position: 'Outside',
-                    connectorStyle: { length: '10%' },
-                    font: {
-                        color: 'Black',
-                        size: '14px',
-                        fontFamily: 'Roboto'
-                    }
-                },
-                animation: { enable: false },
-                palettes: ['#61EFCD', '#CDDE1F', '#FEC200', '#CA765A', '#2485FA', '#F57D7D', '#C152D2',
-                    '#8854D9', '#3D4EB8', '#00BCD7']
-            }
-        ],
+        series: getSeries(),
         legendSettings: {
             visible: true
         },
@@ -566,7 +550,7 @@ function InitializeComponet() {
         dataSource: pieRenderData,
         rowTemplate: '#rowtemplate',
         columns: [
-            { field: 'color', width: '10%', textAlign: 'center' },
+            { field: 'color', width: '10%', textAlign: 'Center' },
             { field: 'text', width: '50%' },
             { field: 'y', width: '20%' },
             { field: 'x', width: '20%' }
@@ -625,7 +609,7 @@ function InitializeComponet() {
                 field: 'Amount',
                 headerText: 'Amount',
                 width: 120,
-                textAlign: 'right',
+                textAlign: 'Right',
                 template: '#amtTemplate',
             }
         ]

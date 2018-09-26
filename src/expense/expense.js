@@ -176,7 +176,7 @@ window.expense = function () {
         allowSelection: true,
         rowSelected: onGridCheckBoxChange,
         rowDeselected: onGridCheckBoxChange,
-        created: onGridRender,
+        dataBound: onGridRender,
         editSettings: { allowEditing: true },
         allowPaging: true,
         pageSettings: { pageSize: 11 },
@@ -615,7 +615,7 @@ window.expense = function () {
         cssClass: 'DateTime',
         format: 'MM/dd/yyyy',
         showClearButton: false,
-        readonly: false,
+        allowEdit: false,
         change: dateRangeChanged
     });
     dateRangePickerObject.appendTo('#daterange');

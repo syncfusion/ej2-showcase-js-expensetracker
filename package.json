@@ -6,7 +6,11 @@
     "license": "SEE LICENSE IN license",
     "dependencies": {
         "@syncfusion/ej2": "*",
+        "browser-sync": "^2.24.7",
         "crossroads": "^0.12.2",
-        "hasher": "^1.2.0"
+        "gulp": "^3.9.1",
+        "hasher": "^1.2.0",
+        "run-sequence": "^2.2.1",
+        "webpack-stream": "^5.1.1"
     }
 }
