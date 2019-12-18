@@ -2,6 +2,16 @@
 <html lang="en">
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WLQL39J');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <title>Essential JS 2 for JavaScript (ES5) - Expense Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
@@ -37,6 +47,10 @@
 <div id="confirmDialog" style='min-width: 260px;'></div>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLQL39J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div hidden id="sync-analytics" data-queue="EJ2 - ShowCase - JavaScript ES5 - Expense Tracker"></div>
     <div id="addexpenseDialog" class="expense-dialog"></div>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -59,7 +73,7 @@
                         <p class='name' id='user-name'>Nicholas Delacruz</p>
                         <div class='wallet-container'>
                             <span style='height: 27px;' class='balance-align'>
-                                <img src="./styles/images/cash-wallet.svg" />
+                                <img src="./styles/images/cash-wallet.svg" alt="Cash Wallet" />
                             </span>
                             <span id="current-balance" class='balance-align'>$ 0</span>
                         </div>
@@ -93,7 +107,7 @@
 <script src="./src/dashboard/dashboard.js "></script>
 <script src="./src/expense/expense.js "></script>
 <script src="./src/about/about.js "></script>
-<script>      
+<script>
     function retDate(DateTime) {
         return window.getDate(DateTime)
     }
