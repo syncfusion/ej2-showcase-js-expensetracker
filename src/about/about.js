@@ -1,4 +1,4 @@
-
+var dashboardFunction = require("../dashboard/dashboard.js");
     window.about = function () {
-        cardUpdate();
+        dashboardFunction.cardUpdate();
     };

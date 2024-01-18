@@ -1,18 +1,18 @@
 
-var startDate = new Date('2017-05-31T12:30:00-06:00');
-var endDate = new Date('2017-11-30T12:30:00-06:00');
-var userInfo = {
+export var startDate = new Date('2017-05-31T12:30:00-06:00');
+export var endDate = new Date('2017-11-30T12:30:00-06:00');
+export var userInfo = {
     'FirstName': 'Nicholas',
     'FullName': 'Nicholas Delacruz',
     'Email': 'nicholas@gmail.com'
 };
-var categoryIncomeData = [
+export var categoryIncomeData = [
     { Class: 'category-icon Salary', Category: 'Salary', Id: 'Salary' },
     { Class: 'category-icon Interests', Category: 'Interests', Id: 'Interests' },
     { Class: 'category-icon Business', Category: 'Business', Id: 'Business' },
     { Class: 'category-icon Extra income', Category: 'Extra income', Id: 'Extra income' }
 ];
-var categoryExpenseData = [
+export var categoryExpenseData = [
     { Class: 'category-icon Rent', Category: 'Rent', Id: 'Rent' },
     { Class: 'category-icon Food', Category: 'Food', Id: 'Food' },
     { Class: 'category-icon Bills', Category: 'Bills', Id: 'Bills' },
@@ -29,7 +29,7 @@ var categoryExpenseData = [
     { Class: 'category-icon Miscellaneous', Category: 'Miscellaneous', Id: 'Miscellaneous' },
     { Class: 'category-icon Personal Care', Category: 'Personal Care', Id: 'Personal Care' }
 ];
-var expenseData = [{
+export var expenseData = [{
     'UniqueId': 'T100001',
     'DateTime': new Date(1496288520000),
     'Category': 'Food',

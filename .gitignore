@@ -1,6 +1,5 @@
-.npmrc
 .vscode/
-dist/
 node_modules/
-src/**/*.min.js
-src/**/*-plnkr.json
+dist/
+npm-debug.log
+shelljs*

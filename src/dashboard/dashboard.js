@@ -6,6 +6,8 @@ var predicateStart = new ej.data.Predicate('DateTime', 'greaterthanorequal', win
 var predicateEnd = new ej.data.Predicate('DateTime', 'lessthanorequal', window.endDate);
 var predicate = predicateStart.and(predicateEnd);
 
+var dataValue = require("../common/common.data.js");
+
 var chartDS;
 var pieChartDS;
 var gridDS;
@@ -16,7 +18,8 @@ var pie;
 var grid;
 var pieLegendData = [];
 var pieRenderData = [];
-var tempData = dataSource;
+var tempData = dataValue.expenseData;
+var dataSource = dataValue.expenseData;
 var legendData = [];
 var pieRenderingData = [];
 var category = [];
@@ -26,7 +29,7 @@ var groupValue = 0;
 var renderData = [];
 var hiGridData = [];
 
-function cardUpdate(toUpdate) {
+export function cardUpdate(toUpdate) {
     if (toUpdate) {
         updatePredicate();
     }

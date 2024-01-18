@@ -1,6 +1,10 @@
-window.expenseDS = expenseData;
-window.userName = userInfo.FullName;
-window.userFirstName = userInfo.FirstName;
+import '../../styles/styles.scss';
+import '../../styles/index.scss';
+
+var commonData = require("./common.data.js");
+window.expenseDS = commonData.expenseData;
+window.userName = commonData.userInfo.FullName;
+window.userFirstName = commonData.userInfo.FirstName;
 
 var intl = new ej.base.Internationalization();
 window.getDate = function (value) {
@@ -23,8 +27,8 @@ var ExpensePage = {};
     ExpensePage.expense = "expense";
 
 if (ej.base.isNullOrUndefined(window.startDate)) {
-    window.startDate = startDate;
-    window.endDate = endDate;
+    window.startDate = commonData.startDate;
+    window.endDate = commonData.endDate;
 }
 
 /* tslint:disable-next-line */
@@ -35,7 +39,7 @@ function updateDate(list) {
 function parseDate(date) {
     return new Date((date).match(/\d+/)[0] * 1);
 }
-updateDate(expenseData);
+updateDate(commonData.expenseData);
 handleResize();
 function getCurrentPage() {
     var currentPage;
@@ -68,7 +72,7 @@ crossroads.addRoute('/:lang:', function () {
         if (!ej.base.isNullOrUndefined(document.querySelector('.expense-active-page'))) {
             document.querySelector('.expense-active-page').classList.remove('expense-active-page');
         }
-        var ajaxHTML = new ej.base.Ajax('src/' + sample + '/' + sample + '.html', 'GET', true);
+        var ajaxHTML = new ej.base.Ajax(sample + '.html', 'GET', true);
         ajaxHTML.send().then(function (value) {
             document.getElementById('content').innerHTML = '';
             document.getElementById('content').innerHTML = value.toString();
