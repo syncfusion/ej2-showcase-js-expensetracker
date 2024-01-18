@@ -1,7 +1,7 @@
 /**
  * Dashboard handler
  */
-
+var dashboardFunction = require("../dashboard/dashboard.js");
 var incomeRadio;
 var expenseRadio;
 var cashRadio;
@@ -36,6 +36,12 @@ var minAmount;
 var maxAmount;
 var editValue;
 var deleteValue;
+
+var dataValue = require("../common/common.data.js");
+
+var categoryExpenseData = dataValue.categoryExpenseData;
+var categoryIncomeData = dataValue.categoryIncomeData;
+
 /* tslint:enable */
 var defaultGrigColumns = [
     { type: 'checkbox', width: 40, },
@@ -128,7 +134,7 @@ function onGridCheckBoxChange(args) {
 // tslint:disable-next-line:max-func-body-length
 
 window.expense = function () {
-    cardUpdate();
+    dashboardFunction.cardUpdate();
     var predicateSt = new ej.data.Predicate('Spent', 'equal', 10);
     var predicateStart = new ej.data.Predicate('DateTime', 'greaterthanorequal', window.startDate);
     var predicateEnd = new ej.data.Predicate('DateTime', 'lessthanorequal', window.endDate);
@@ -191,7 +197,7 @@ window.expense = function () {
     grid.appendTo('#grid');
     if (document.getElementById('grid_edit')) {
         document.getElementById('grid_edit').onclick = function () {
-            var ajax = new ej.base.Ajax('./src/expense/dialog.html', 'GET', true);
+            var ajax = new ej.base.Ajax('dialog.html', 'GET', true);
             ajax.send().then();
             ajax.onSuccess = function (data) {
                 grid.toolbarModule.toolbar.enableItems(document.getElementById('grid_delete').parentElement, true);
@@ -262,7 +268,7 @@ window.expense = function () {
             query: new ej.data.Query().where(predicate).sortByDesc('DateTime')
         });
         grid.refresh();
-        cardUpdate();
+        dashboardFunction.cardUpdate();
         confirmDialogObj.hide();
     }
 
@@ -313,7 +319,7 @@ window.expense = function () {
     /* tslint:enable */
 
     function showAddDialog() {
-        var ajax = new ej.base.Ajax('./src/expense/dialog.html', 'GET', true);
+        var ajax = new ej.base.Ajax('dialog.html', 'GET', true);
         ajax.send().then();
         ajax.onSuccess = function (data) {
             if (addExpenseDialog) {
@@ -377,7 +383,7 @@ window.expense = function () {
             query: new ej.data.Query().where(predicate).sortByDesc('DateTime')
         });
         grid.refresh();
-        cardUpdate();
+        dashboardFunction.cardUpdate();
         editExpenseDialog.hide();
     }
 
@@ -410,7 +416,7 @@ window.expense = function () {
         });
         grid.refresh();
         addExpenseDialog.hide();
-        cardUpdate();
+        dashboardFunction.cardUpdate();
     }
 
     function onNewDialogCancel() {
@@ -606,7 +612,7 @@ window.expense = function () {
     function dateRangeChanged(args) {
         window.startDate = args.startDate;
         window.endDate = args.endDate;
-        cardUpdate(true);
+        dashboardFunction.cardUpdate(true);
         generatePredicate(dateRangePickerObject.startDate, dateRangePickerObject.endDate, 'dateChange');
     }
     dateRangePickerObject = new ej.calendars.DateRangePicker({
@@ -674,7 +680,8 @@ window.expense = function () {
 function getCategory(start, end) {
     filterCategory = [];
     /* tslint:disable-next-line */
-    tempData.forEach(function (item) {
+    var tempData = require("../common/common.data.js")
+    tempData.expenseData.forEach(function (item) {
         /* tslint:enable-next-line */
         if (start.valueOf() <= item.DateTime.valueOf() && end.valueOf() >= item.DateTime.valueOf()) {
             if (filterCategory.indexOf(item.Category) < 0) {
